@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "OpilioCraft.ObjectPath", "OpilioCraft.ObjectPath.fsproj", "{BDF7E769-F93A-4163-A696-BC706C4A87FC}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "UnitTests", "UnitTests\UnitTests.fsproj", "{757AFCA6-213F-496C-9599-8CCA3D3CDA20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDF7E769-F93A-4163-A696-BC706C4A87FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDF7E769-F93A-4163-A696-BC706C4A87FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDF7E769-F93A-4163-A696-BC706C4A87FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDF7E769-F93A-4163-A696-BC706C4A87FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{757AFCA6-213F-496C-9599-8CCA3D3CDA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{757AFCA6-213F-496C-9599-8CCA3D3CDA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{757AFCA6-213F-496C-9599-8CCA3D3CDA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{757AFCA6-213F-496C-9599-8CCA3D3CDA20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9183049-5966-45C3-8AF1-B4BE26B05D04}
+	EndGlobalSection
+EndGlobal
