@@ -38,16 +38,20 @@ type DefaultRuntime () =
             |> evalObjectPath tail
 
         | (ObjectPathElement.DictionaryKey key) :: tail ->
-            theObj.GetType().GetProperty("Item", [| typeof<string> |])
-            |> Option.ofObj
-            |> Option.defaultWith (fun _ -> failwith $"{theObj.GetType().FullName} has no string indexed item property")
+            let objType = theObj.GetType()
 
-            |> (fun pi ->
+            match objType.IsGenericType with
+            | true -> objType.GetProperty("Item", [| typeof<string> |])
+            | _    -> objType.GetProperty("Item", [| typeof<obj>    |])
+
+            |> Option.ofObj
+            |> Option.defaultWith (fun _ -> failwith $"{theObj.GetType().FullName} has no compatible indexed item property")
+
+            |> fun pi ->
                 try
                     pi.GetValue(theObj, [| key :> obj |])
                 with
                 | :? System.Reflection.TargetInvocationException as exn -> failwith $"given data has no item for key {key}"
-                )
 
             |> evalObjectPath tail
     
