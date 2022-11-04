@@ -21,38 +21,30 @@ type DefaultRuntime () =
                 parsedObjectPath
             )
 
+    let getPropertyValue (name : string) (theObj : obj) =
+        theObj.GetType().GetProperty(name)
+        |> Option.ofObj
+        |> Option.defaultWith (fun _ -> failwith $"{theObj.GetType().FullName} has no property \"{name}\"")
+
+        |> fun pi ->
+            try
+                pi.GetValue(theObj)
+            with
+            | exn -> failwith $"cannot access value of property {name}: {exn.Message}"
+
     let rec evalObjectPath (objectPath : ObjectPath) (theObj : obj) : obj =
         match objectPath with
         | [] -> theObj
 
         | (ObjectPathElement.Property name) :: tail ->
-            theObj.GetType().GetProperty(name)
-            |> Option.ofObj
-            |> Option.defaultWith (fun _ -> failwith $"{theObj.GetType().FullName} has no property \"{name}\"")
-
-            |> (fun pi -> pi.GetValue(theObj))
-
-            // stringify enum types to facilitate wrapping
-            |> (fun value -> if value.GetType().IsEnum then value.ToString() :> obj else value)
-
+            theObj
+            |> getPropertyValue name
+            |> (fun value -> if value.GetType().IsEnum then value.ToString() :> obj else value) // stringify enum types to facilitate wrapping
             |> evalObjectPath tail
-
+            
         | (ObjectPathElement.DictionaryKey key) :: tail ->
-            let objType = theObj.GetType()
-
-            match objType.IsGenericType with
-            | true -> objType.GetProperty("Item", [| typeof<string> |])
-            | _    -> objType.GetProperty("Item", [| typeof<obj>    |])
-
-            |> Option.ofObj
-            |> Option.defaultWith (fun _ -> failwith $"{theObj.GetType().FullName} has no compatible indexed item property")
-
-            |> fun pi ->
-                try
-                    pi.GetValue(theObj, [| key :> obj |])
-                with
-                | :? System.Reflection.TargetInvocationException as exn -> failwith $"given data has no item for key {key}"
-
+            theObj
+            |> getPropertyValue "Item"
             |> evalObjectPath tail
     
     // interface helpers
