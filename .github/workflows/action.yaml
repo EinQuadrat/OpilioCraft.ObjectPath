@@ -18,6 +18,6 @@ jobs:
       - name: Build
         run:  dotnet build ./OpilioCraft.ObjectPath --configuration Release --no-restore
       - name: Pack
-        run: dotnet pack /OpilioCraft.ObjectPath --configuration Release --no-restore
+        run: dotnet pack ./OpilioCraft.ObjectPath --configuration Release --no-restore
       - name: Publish
         run: nuget push **/*.nupkg -Source 'https://nuget.pkg.github.com/EinQuadrat/index.json' -ApiKey ${{secrets.NUGET_TOKEN}} -SkipDuplicate
