@@ -21,32 +21,47 @@ type DefaultRuntime () =
                 parsedObjectPath
             )
 
-    let getPropertyValue (name : string) (theObj : obj) =
+    let getProperty (name : string) (theObj : obj) =
         theObj.GetType().GetProperty(name)
         |> Option.ofObj
         |> Option.defaultWith (fun _ -> failwith $"{theObj.GetType().FullName} has no property \"{name}\"")
-
-        |> fun pi ->
-            try
-                pi.GetValue(theObj)
-            with
-            | exn -> failwith $"cannot access value of property {name}: {exn.Message}"
 
     let rec evalObjectPath (objectPath : ObjectPath) (theObj : obj) : obj =
         match objectPath with
         | [] -> theObj
 
+        | (ObjectPathElement.DictionaryKey key) :: tail ->
+            theObj.GetType().GetProperty("Item")
+            |> Option.ofObj
+            |> Option.defaultWith (fun _ -> failwith $"{theObj.GetType().FullName} has no indexed Item property")
+
+            |> fun pi ->
+                try
+                    pi.GetValue(theObj, [| key |])
+                with
+                | exn -> failwith $"cannot access value of property Item, key {key}: {exn.Message}"
+
+            |> evalObjectPath tail
+
         | (ObjectPathElement.Property name) :: tail ->
-            theObj
-            |> getPropertyValue name
-            |> (fun value -> if value.GetType().IsEnum then value.ToString() :> obj else value) // stringify enum types to facilitate wrapping
+            let maybePropInfo = theObj.GetType().GetProperty(name) |> Option.ofObj
+
+            if maybePropInfo.IsSome
+            then                
+                try
+                    maybePropInfo.Value.GetValue(theObj)
+                with
+                | exn -> failwith $"cannot access value of property {name}: {exn.Message}"
+                
+                // stringify enum types to facilitate wrapping
+                |> (fun value -> if value.GetType().IsEnum then value.ToString() :> obj else value)
+            else
+                // not a property -> try as indexed Item property
+                evalObjectPath [ (ObjectPathElement.DictionaryKey name) ] theObj
+
             |> evalObjectPath tail
             
-        | (ObjectPathElement.DictionaryKey key) :: tail ->
-            theObj
-            |> getPropertyValue "Item"
-            |> evalObjectPath tail
-    
+            
     // interface helpers
     member private x.AsIRuntime = x :> IRuntime
     member x.Eval = x.AsIRuntime.Eval

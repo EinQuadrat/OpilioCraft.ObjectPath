@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "OpilioCraft.ObjectPath", "OpilioCraft.ObjectPath.fsproj", "{BDF7E769-F93A-4163-A696-BC706C4A87FC}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "OpilioCraft.ObjectPath", "OpilioCraft.ObjectPath\OpilioCraft.ObjectPath.fsproj", "{BDF7E769-F93A-4163-A696-BC706C4A87FC}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "UnitTests", "UnitTests\UnitTests.fsproj", "{757AFCA6-213F-496C-9599-8CCA3D3CDA20}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "OpilioCraft.ObjectPath.Cmdlets", "OpilioCraft.ObjectPath.Cmdlets\OpilioCraft.ObjectPath.Cmdlets.fsproj", "{7CE79332-1BD5-439A-9D33-9A38A86D5307}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{BDF7E769-F93A-4163-A696-BC706C4A87FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDF7E769-F93A-4163-A696-BC706C4A87FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDF7E769-F93A-4163-A696-BC706C4A87FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{757AFCA6-213F-496C-9599-8CCA3D3CDA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{757AFCA6-213F-496C-9599-8CCA3D3CDA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{757AFCA6-213F-496C-9599-8CCA3D3CDA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{757AFCA6-213F-496C-9599-8CCA3D3CDA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE79332-1BD5-439A-9D33-9A38A86D5307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE79332-1BD5-439A-9D33-9A38A86D5307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE79332-1BD5-439A-9D33-9A38A86D5307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE79332-1BD5-439A-9D33-9A38A86D5307}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
