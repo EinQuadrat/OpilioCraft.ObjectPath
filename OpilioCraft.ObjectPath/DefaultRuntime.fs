@@ -7,7 +7,7 @@ type DefaultRuntime () =
     let mutable objectData : obj option = None
 
     let parseObjectPath opString : ObjectPath =
-        FParsec.CharParsers.run Parser.pObjectPath opString
+        run Parser.pObjectPath opString
         |> function
             | Success(objectPath, _, _) -> objectPath
             | Failure(_, _, _) -> raise <| InvalidObjectPathException opString

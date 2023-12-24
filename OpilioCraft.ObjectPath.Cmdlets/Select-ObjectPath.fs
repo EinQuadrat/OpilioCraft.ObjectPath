@@ -27,7 +27,7 @@ type public SelectObjectPathCommand () =
 
     // cmdlet behaviour
     override x.BeginProcessing () =
-        let runtime = new OpilioCraft.ObjectPath.DefaultRuntime () :> OpilioCraft.ObjectPath.IRuntime
+        let runtime = new DefaultRuntime () :> OpilioCraft.ObjectPath.IRuntime
 
         match runtime.TryParse x.ObjectPath with
         | Some expr -> objectPath <- Loaded (runtime, expr)
