@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>OpilioCraft.ObjectPath.Cmdlets</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>Carsten Schäfer</Authors>
     <Description>PowerShell cmdlets utilizing ObjectPath.</Description>
-    <Copyright>Copyright (c) 2022 by Carsten Schäfer</Copyright>
+    <Copyright>Copyright (c) 2022-2024 by Carsten Schäfer</Copyright>
     <PackageTags>OpilioCraft;FSharp;ObjectPathc</PackageTags>
     <RepositoryUrl>https://github.com/EinQuadrat/OpilioCraft.ObjectPath.git</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

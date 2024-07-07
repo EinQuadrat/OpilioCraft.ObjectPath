@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>OpilioCraft.ObjectPath</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <Authors>Carsten Schäfer</Authors>
     <Description>JsonPath inspired Object Query Language. Intended to be used for conditions together with YaLisp.</Description>
-    <Copyright>Copyright (c) 2022 by Carsten Schäfer</Copyright>
+    <Copyright>Copyright (c) 2022-2024 by Carsten Schäfer</Copyright>
     <RepositoryUrl>https://github.com/EinQuadrat/OpilioCraft.ObjectPath.git</RepositoryUrl>
     <PackageTags>OpilioCraft;FSharp;FParsec</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="8.0.100" />
+    <PackageReference Update="FSharp.Core" Version="8.0.300" />
   </ItemGroup>
 
 </Project>
